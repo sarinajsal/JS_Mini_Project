@@ -1,0 +1,36 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: cadetblue;
+    text-align: center;
+    margin:0;
+    color: darkcyan;
+}
+
+#board{
+    width: 500px;
+    height: 500px;
+    background-color: darkcyan;
+
+    margin: auto;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, auto);
+    justify-items: center;
+    align-items: center;
+
+    
+}
+
+.cell{
+    height: 150px;
+    width: 150px;
+    background-color: lightblue; 
+    cursor: pointer;
+
+    
+}
+
+#restart{
+
+}
+
