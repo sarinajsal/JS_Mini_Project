@@ -30,7 +30,19 @@ body{
     
 }
 
-#restart{
-
+.message-restart {
+    display: none;
+    display: flex;
+    justify-content: center;
+    
 }
+
+.message-restart.show {
+    display: flex;
+    
+}
+
+/* #restart-button {
+     
+} */
 
