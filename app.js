@@ -18,14 +18,16 @@ cellElements.forEach(cell => {
 
 // reset the page when restart button clicked
 const restartButton = document.querySelector("#restart-button");
-restartButton.addEventListener("click", () => {
+restartButton.addEventListener("click", restartGame)
+
+function restartGame () {
     cellElements.forEach(cell => {
         resultMessage.innerText = "";
         cell.removeEventListener("click", handleClick, {once : true})
         cell.innerText = "";
         cell.addEventListener('click', handleClick, {once : true})
     })
-})
+}
 
 // Logic for win and draw
 

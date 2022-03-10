@@ -10,8 +10,7 @@ body{
 #board{
     width: 500px;
     height: 500px;
-    background-color: darkcyan;
-
+    /* background-color: darkcyan; */
     margin: auto;
     display: grid;
     gap: 1px;
@@ -22,13 +21,43 @@ body{
 }
 
 .cell{
-    height: 150px;
-    width: 150px;
-    background-color: lightblue; 
+    height: 165px;
+    width: 165px;
+    /* background-color: lightblue;  */
     cursor: pointer;
     font-family: monaco;
     font-size: 150px;
     line-height: 120px;
-   text-align: center;
+    text-align: center;
+    border: 5px solid black;
 }
 
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:first-child,
+.cell:nth-child(4),
+.cell:nth-child(7) {
+    border-left: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+    border-right: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+    border-bottom: none;
+}
+
+#restart-button {
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
