@@ -8,6 +8,8 @@ const handleClickPlayer = (clickedCellEvent) => {
     currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
     clickedCell.innerText = currentPlayer;
 
+    // console.log(winningMethod(currentPlayer))
+
     playerName = currentPlayer === 'x' ? 'Player 1' : 'Player 2';
     resultMessage.innerText = `${playerName}, it's your turn!`
 }
@@ -49,8 +51,14 @@ function winningMethod(currentPlayer) {
     })
 }
 
-const handleClickWin = () => {
-    if (winningMethod(currentPlayer)) {
-        
-    }
-}
+// const handleClickWin = async () => {
+//     if (await winningMethod(currentPlayer)) {
+//         cellElements.forEach(cell => {
+//             console.log('bye');
+//             cell.removeEventListener("click", handleClickPlayer, {once : true})
+//         })
+//     }
+//     console.log('hi');
+// }
+
+// handleClickWin();
