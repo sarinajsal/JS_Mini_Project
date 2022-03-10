@@ -9,12 +9,12 @@
     <script src = "app.js" defer></script>
 </head>
 <body>
-    <h1>Tic Tac Toe</h1>
+    <h1 id = "title">Tic Tac Toe</h1>
     <hr>
     <br>
 
     <div id ="board"> 
-        <div id="one" class="cell"></div>
+        <!-- <div id="one" class="cell"></div>
         <div id="two" class="cell"></div>
         <div id="three" class="cell"></div>
         <div id="four" class="cell"></div>
@@ -22,10 +22,20 @@
         <div id="six" class="cell"></div>
         <div id="seven" class="cell"></div>
         <div id="eight" class="cell"></div>
-        <div id="nine" class="cell"></div>
+        <div id="nine" class="cell"></div> -->
+
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
     </div>
     <section class="message-restart show">
-        <h2 id="result-message">X</h2>
+        <h2 id="result-message"></h2>
         <button id="restart-button">Restart</button>
     </section>
     
