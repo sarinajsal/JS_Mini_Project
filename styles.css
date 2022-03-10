@@ -14,7 +14,7 @@ body{
 
     margin: auto;
     display: grid;
-    gap: 10px;
+    gap: 1px;
     grid-template-columns: repeat(3, auto);
     justify-items: center;
     align-items: center;
@@ -31,22 +31,4 @@ body{
     line-height: 120px;
    text-align: center;
 }
-
-
-
-.message-restart {
-    display: none;
-    display: flex;
-    justify-content: center;
-    
-}
-
-.message-restart.show {
-    display: flex;
-    
-}
-
-/* #restart-button {
-     
-} */
 
