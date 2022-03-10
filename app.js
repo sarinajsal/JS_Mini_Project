@@ -6,3 +6,15 @@
 //if restart button clicked, clear the grid and start game again
 //if the game is not won/drawn, alternate player then plays 
 
+// Create 2 classes in css, 1 for X and 1 for O whereby if you make class of a div cell in index.html 'cell x' or 'cell 
+// ciricle', it will show the respective shape (the class for which is present in styles.css)
+
+// JS
+    // create variables to be able to switch between the X and O classes in css
+    // add event listener for each of the 9 div cells (using forEach)
+    // in this event listener, one of the arguments will be a handleClick function
+        // handleClick: place the mark
+        //              check for win (check for any 3 in a rows)
+        //              check for draw
+        //              switch turns
+ 
