@@ -14,9 +14,9 @@
     // add event listener for each of the 9 div cells (using forEach)
     // in this event listener, one of the arguments will be a handleClick function
         // handleClick: place the mark
+        //              switch turns
         //              check for win (check for any 3 in a rows)
         //                  if win, print result and show restart button
         //              check for draw
         //                  if draw, print result and show restart button
-        //              switch turns
  
