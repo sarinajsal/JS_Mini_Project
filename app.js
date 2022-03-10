@@ -1,17 +1,21 @@
 let currentPlayer = 'x';
 let playerName = 'Player 1'
+let gameActive = true;
 const cellElements = document.querySelectorAll('[data-cell]');
 const resultMessage = document.querySelector("#result-message");
+resultMessage.innerText = `${playerName}, it's your turn!`
 
 const handleClickPlayer = (clickedCellEvent) => {
+
     const clickedCell = clickedCellEvent.target;
     currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
     clickedCell.innerText = currentPlayer;
 
-    // console.log(winningMethod(currentPlayer))
 
     playerName = currentPlayer === 'x' ? 'Player 1' : 'Player 2';
     resultMessage.innerText = `${playerName}, it's your turn!`
+
+    winningMethod(currentPlayer);
 }
 
 cellElements.forEach(cell => {
@@ -43,22 +47,27 @@ const winningConditions = [
     [2,4,6]
 ];
 
-function winningMethod(currentPlayer) {
-    return winningConditions.some(combination => {
-        return combination.every(index => {
-            return cellElements[index].classList.contains(currentPlayer)
-        })
-    })
-}
-
-// const handleClickWin = async () => {
-//     if (await winningMethod(currentPlayer)) {
-//         cellElements.forEach(cell => {
-//             console.log('bye');
-//             cell.removeEventListener("click", handleClickPlayer, {once : true})
-//         })
+// let roundDraw = false;
+// let emptyArr = [];
+// function isDraw() {    
+//     for (let i = 0; i < cellElements.length; i++) {
+//         emptyArr[i] = cellElements[i].innerText;
 //     }
-//     console.log('hi');
+//     console.log(emptyArr);
 // }
 
-// handleClickWin();
+function winningMethod(currentPlayer) {
+    for (let i = 0; i < winningConditions.length; i++) {
+        const wc = winningConditions[i];
+        let a = cellElements[wc[0]].innerText;
+        let b = cellElements[wc[1]].innerText;
+        let c = cellElements[wc[2]].innerText;
+        if (a === b && b === c && a === currentPlayer) {
+            console.log("worked");
+            cellElements.forEach(cell => {
+                cell.removeEventListener('click', handleClickPlayer, {once : true})
+            })
+            resultMessage.innerText = `${playerName} has won!`
+        }
+    }
+}
