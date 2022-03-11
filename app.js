@@ -30,6 +30,7 @@ function restartGame () {
     cellElements.forEach(cell => {
         resultMessage.innerText = "";
         cell.removeEventListener("click", handleClickPlayer, {once : true})
+        cell.removeEventListener("click", playerComp, {once : true})
         cell.innerText = "";
         currentPlayer = 'o'
         cell.addEventListener('click', handleClickPlayer, {once : true})
@@ -77,8 +78,6 @@ function startComputerMode () {
         cell.innerText = "";
         cell.addEventListener('click', playerComp, {once : true})
     })
-    
-
 }
 
 function playerComp (clickedCellEvent) {
