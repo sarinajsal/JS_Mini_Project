@@ -1,9 +1,8 @@
 let currentPlayer = 'o';
 let playerName = 'Player 1'
 let gameActive = true;
-
-//empty array
 let emptyArray = ["", "", "", "", "", "", "", "", ""];
+
 
 const cellElements = document.querySelectorAll('[data-cell]');
 const resultMessage = document.querySelector("#result-message");
@@ -34,7 +33,6 @@ cellElements.forEach(cell => {
 // reset the page when restart button clicked
 const restartButton = document.querySelector("#restart-button");
 restartButton.addEventListener("click", restartGame)
-
 
 function restartGame () {
     cellElements.forEach(cell => {
@@ -103,27 +101,7 @@ function playerComp (clickedCellEvent) {
     const cellClicked = clickedCellEvent.target;
     cellClicked.innerText = player;
 
-    // check if player has won after player's go
-    // for (let i = 0; i < winningConditions.length; i++) {
-    //     const wc = winningConditions[i];
-    //     let a = cellElements[wc[0]].innerText;
-    //     let b = cellElements[wc[1]].innerText;
-    //     let c = cellElements[wc[2]].innerText;
-    //     if (a === b && b === c && a === player) {
-    //         cellElements.forEach(cell => {
-    //             console.log('player win being shown');
-    //             cell.removeEventListener('click', playerComp, {once : true})
-    //         })
-    //         resultMessage.innerText = `Player has won!`
-    //         emptyArray = ["", "", "", "", "", "", "", "", ""];
-    //         compCheck = true;
-    //     } else if (!emptyArray.includes("")){
-    //         emptyArray = ["", "", "", "", "", "", "", "", ""];
-    //         resultMessage.innerText = `It's a draw!`
-    //     } 
-    // }
-
-    // generating random number and filling in that cell with a 'o'
+     // generating random number and filling in that cell with a 'o'
      setTimeout (() => {
          while (!compCheck) {
         let compCell = Math.floor(Math.random() * 9);
