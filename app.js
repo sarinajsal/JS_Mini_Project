@@ -1,4 +1,4 @@
-let currentPlayer = 'x';
+let currentPlayer = 'o';
 let playerName = 'Player 1'
 let gameActive = true;
 const cellElements = document.querySelectorAll('[data-cell]');
@@ -12,7 +12,7 @@ const handleClickPlayer = (clickedCellEvent) => {
     clickedCell.innerText = currentPlayer;
 
 
-    playerName = currentPlayer === 'x' ? 'Player 1' : 'Player 2';
+    playerName = currentPlayer === 'x' ? 'Player 2' : 'Player 1';
     resultMessage.innerText = `${playerName}, it's your turn!`
 
     winningMethod(currentPlayer);
@@ -31,6 +31,7 @@ function restartGame () {
         resultMessage.innerText = "";
         cell.removeEventListener("click", handleClickPlayer, {once : true})
         cell.innerText = "";
+        currentPlayer = 'o'
         cell.addEventListener('click', handleClickPlayer, {once : true})
     })
 }
@@ -47,14 +48,6 @@ const winningConditions = [
     [2,4,6]
 ];
 
-// let roundDraw = false;
-// let emptyArr = [];
-// function isDraw() {    
-//     for (let i = 0; i < cellElements.length; i++) {
-//         emptyArr[i] = cellElements[i].innerText;
-//     }
-//     console.log(emptyArr);
-// }
 
 function winningMethod(currentPlayer) {
     for (let i = 0; i < winningConditions.length; i++) {
@@ -63,11 +56,74 @@ function winningMethod(currentPlayer) {
         let b = cellElements[wc[1]].innerText;
         let c = cellElements[wc[2]].innerText;
         if (a === b && b === c && a === currentPlayer) {
-            console.log("worked");
+            // console.log("worked");
             cellElements.forEach(cell => {
                 cell.removeEventListener('click', handleClickPlayer, {once : true})
             })
-            resultMessage.innerText = `${playerName} has won!`
+            let winningPlayer = currentPlayer === 'x' ? 'Player 1' : 'Player 2';
+            resultMessage.innerText = `${winningPlayer} has won!`
+        }
+    }
+}
+
+// play against a computer
+const computerBtn = document.getElementById("computer-button");
+computerBtn.addEventListener('click', startComputerMode)
+
+function startComputerMode () {
+    cellElements.forEach(cell => {
+        resultMessage.innerText = "";
+        cell.removeEventListener("click", handleClickPlayer, {once : true})
+        cell.innerText = "";
+        cell.addEventListener('click', playerComp, {once : true})
+    })
+    
+
+}
+
+function playerComp (clickedCellEvent) {
+    let player = 'x';
+    let computer = 'o';
+    let compCheck = false;
+
+    const cellClicked = clickedCellEvent.target;
+    cellClicked.innerText = player;
+
+    // check if player has won after player's go
+    for (let i = 0; i < winningConditions.length; i++) {
+        const wc = winningConditions[i];
+        let a = cellElements[wc[0]].innerText;
+        let b = cellElements[wc[1]].innerText;
+        let c = cellElements[wc[2]].innerText;
+        if (a === b && b === c && a === player) {
+            cellElements.forEach(cell => {
+                console.log('player win being shown');
+                cell.removeEventListener('click', playerComp, {once : true})
+            })
+            resultMessage.innerText = `Player has won!`
+        }
+    }
+
+    // generating random number and filling in that cell with a 'o'
+    while (!compCheck) {
+        let compCell = Math.floor(Math.random() * 9);
+        if (cellElements[compCell].innerText === "") {
+            cellElements[compCell].innerText = computer;
+            compCheck = true;
+        }
+    }
+
+    // check if computer has won after computer's go
+    for (let i = 0; i < winningConditions.length; i++) {
+        const wc = winningConditions[i];
+        let a = cellElements[wc[0]].innerText;
+        let b = cellElements[wc[1]].innerText;
+        let c = cellElements[wc[2]].innerText;
+        if (a === b && b === c && a === computer) {
+            cellElements.forEach(cell => {
+                cell.removeEventListener('click', playerComp, {once : true})
+            })
+            resultMessage.innerText = `Computer has won!`
         }
     }
 }
